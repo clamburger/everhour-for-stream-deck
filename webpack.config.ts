@@ -1,16 +1,12 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
 
-import {createDevelopmentManifest, manifestNs} from "./build/scripts/manifest";
+import {manifestNs} from "./build/scripts/manifest";
 
 import copyWebpackPlugin from 'copy-webpack-plugin';
 
 const config = (environment: unknown, options: { mode: string; env: unknown }): webpack.Configuration => {
   let pluginNs = manifestNs;
-
-  // if (options.mode === 'development') {
-  //   pluginNs = 'dev.' + manifestNs;
-  // }
 
   return {
     entry: {
