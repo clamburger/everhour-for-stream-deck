@@ -1,5 +1,5 @@
-import AbstractStreamdeckConnector from "./AbstractSteamdeckConnector";
-import {PIEvents} from "@rweich/streamdeck-ts/dist/events/Events";
+import AbstractStreamdeckConnector from './AbstractSteamdeckConnector';
+import { PIEvents } from '@rweich/streamdeck-ts/dist/events/Events';
 
 export default class PropertyInspector extends AbstractStreamdeckConnector {
   /** registers the eventlistener to the events the streamdeck sends to us */

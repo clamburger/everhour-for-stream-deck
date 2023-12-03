@@ -1,0 +1,14 @@
+{
+  "files": [
+    ".github/**/*",
+    ".husky/**/*",
+    "build/**/*",
+    ".babelrc",
+    ".editorconfig",
+    ".gitignore",
+    ".templaterc.json",
+    "release.config.js",
+    "tsconfig.json",
+    "webpack.config.ts"
+  ]
+}

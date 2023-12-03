@@ -26,7 +26,7 @@ inspector.on('websocketOpen', ({ uuid }) => {
       const name = input.getAttribute('name') as string;
       globalSettings[name] = input.value;
       inspector.setGlobalSettings(inspector.pluginUUID as string, globalSettings);
-    })
+    });
   }
 
   // Update local settings on change
@@ -36,7 +36,7 @@ inspector.on('websocketOpen', ({ uuid }) => {
       const name = input.getAttribute('name') as string;
       localSettings[name] = input.value;
       inspector.setSettings(inspector.pluginUUID as string, localSettings);
-    })
+    });
   }
 });
 
@@ -45,7 +45,7 @@ inspector.on('didReceiveGlobalSettings', ({ settings }) => {
 
   // Populate the existing global settings
   for (const [key, value] of Object.entries(globalSettings)) {
-    const input = document.querySelector(`input[data-type="global"][name="${key}"]`) as HTMLInputElement|null;
+    const input = document.querySelector(`input[data-type="global"][name="${key}"]`) as HTMLInputElement | null;
     if (input) {
       input.value = value;
     }
@@ -57,7 +57,7 @@ inspector.on('didReceiveSettings', ({ settings }) => {
 
   // Populate the existing local settings
   for (const [key, value] of Object.entries(localSettings)) {
-    const input = document.querySelector(`input[data-type="local"][name="${key}"]`) as HTMLInputElement|null;
+    const input = document.querySelector(`input[data-type="local"][name="${key}"]`) as HTMLInputElement | null;
     if (input) {
       input.value = value;
     }

@@ -1,17 +1,22 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
 
-import {manifestNs} from "./build/scripts/manifest";
+import { createDevelopmentManifest, manifestNs } from './build/scripts/manifest';
 
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import copyWebpackPlugin from 'copy-webpack-plugin';
 
 const config = (environment: unknown, options: { mode: string; env: unknown }): webpack.Configuration => {
   let pluginNs = manifestNs;
 
+  if (options.mode === 'development') {
+    pluginNs = 'dev.' + manifestNs;
+  }
+
   return {
     entry: {
       plugin: './build/entries/PluginEntry.ts',
-      propertyInspector: './build/entries/PropertyInspectorEntry.ts'
+      propertyinspector: './build/entries/PropertyinspectorEntry.ts',
     },
     target: 'web',
     output: {
@@ -27,8 +32,8 @@ const config = (environment: unknown, options: { mode: string; env: unknown }): 
             to: path.resolve(__dirname, 'dist/' + pluginNs + '.sdPlugin'),
             toType: 'dir',
             transform: (content, path) => {
-              if (/manifest\.json$/.test(path)) {
-                return content.toString().replaceAll('assets/', '')
+              if (options.mode === 'development' && /manifest\.json$/.test(path)) {
+                return createDevelopmentManifest();
               }
               if (!/\.html/.test(path)) {
                 return content;
@@ -36,26 +41,18 @@ const config = (environment: unknown, options: { mode: string; env: unknown }): 
               return content.toString().replace('{{ PLUGIN_NS }}', pluginNs);
             },
           },
-          {
-            from: 'assets/manifest.json',
-            to: path.resolve(__dirname, 'manifest.json'),
-            toType: 'file',
-            filter: (resourcePath) => {
-              return options.mode === 'development';
-            },
-            transform: (content, path) => {
-              return content.toString().replaceAll('assets/', 'dist/' + pluginNs + '.sdPlugin/')
-            }
-          }
         ],
-      })
+      }),
+      new ForkTsCheckerWebpackPlugin(),
     ],
     module: {
       rules: [
         {
-          test: /\.ts$/,
-          use: 'ts-loader',
+          test: /\.(ts|js)$/,
           exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+          },
         },
         {
           test: /\.js$/,
@@ -75,10 +72,9 @@ const config = (environment: unknown, options: { mode: string; env: unknown }): 
       extensions: ['.ts', '.js'],
     },
     optimization: {
-      splitChunks: {}
-    }
+      splitChunks: {},
+    },
   };
-
 };
 
 export default config;

@@ -1,16 +1,16 @@
 import Streamdeck from './classes/Streamdeck';
-import Everhour from "./Everhour";
-import StopAction from "./actions/StopAction";
-import CurrentTaskAction from "./actions/CurrentTaskAction";
-import StartTaskAction from "./actions/StartTaskAction";
-import ResumeTaskAction from "./actions/ResumeTaskAction";
+import Everhour from './Everhour';
+import StopAction from './actions/StopAction';
+import CurrentTaskAction from './actions/CurrentTaskAction';
+import StartTaskAction from './actions/StartTaskAction';
+import ResumeTaskAction from './actions/ResumeTaskAction';
 
 // Create plugin instance
 const plugin = new Streamdeck().plugin();
 
-let interval: NodeJS.Timer|null = null;
-let currentTask: any|null = null;
-let previousTask: any|null = null;
+let interval: NodeJS.Timeout | null = null;
+let currentTask: any | null = null;
+let previousTask: any | null = null;
 
 const registeredActions: Record<string, any> = {};
 
@@ -68,10 +68,10 @@ plugin.on('didReceiveGlobalSettings', ({ settings }) => {
   if (globalSettings.api_token) {
     Everhour.setApiToken(globalSettings.api_token);
   }
-})
+});
 
 // Add event listeners
-plugin.on('keyDown', ({ context}) => {
+plugin.on('keyDown', ({ context }) => {
   const action = registeredActions[context];
   if (action) {
     action.onKeyDown();
@@ -84,9 +84,10 @@ function updateTimerState() {
     return;
   }
 
-  Everhour.timers.get()
-    .then(response => response.json())
-    .then(json => {
+  Everhour.timers
+    .get()
+    .then((response) => response.json())
+    .then((json) => {
       if (json.status === 'stopped') {
         if (currentTask !== null) {
           previousTask = currentTask;
@@ -118,9 +119,4 @@ function getPreviousTask() {
   return previousTask;
 }
 
-export {
-  plugin as default,
-  getCurrentTask,
-  getPreviousTask,
-  updateTimerState,
-};
+export { plugin as default, getCurrentTask, getPreviousTask, updateTimerState };

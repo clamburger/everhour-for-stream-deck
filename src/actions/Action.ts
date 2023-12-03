@@ -8,5 +8,5 @@ export default abstract class Action {
   }
 
   public abstract updateAppearance(): void;
-  public onKeyDown(): void {};
+  public onKeyDown(): void {}
 }

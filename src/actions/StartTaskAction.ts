@@ -1,7 +1,7 @@
-import Images from "../Images";
-import plugin, {getCurrentTask, updateTimerState} from "../Plugin";
-import Action from "./Action";
-import Everhour from "../Everhour";
+import Images from '../Images';
+import plugin, { getCurrentTask, updateTimerState } from '../Plugin';
+import Action from './Action';
+import Everhour from '../Everhour';
 
 export default class StartTaskAction extends Action {
   static id = 'start-task';
@@ -22,7 +22,8 @@ export default class StartTaskAction extends Action {
       plugin.showAlert(this.context);
     } else if (this.isCurrentTask()) {
       console.log(`Stopping timer for task ${this.settings.task_id}`);
-      Everhour.timers.stop()
+      Everhour.timers
+        .stop()
         .then(() => {
           updateTimerState();
         })
@@ -33,7 +34,8 @@ export default class StartTaskAction extends Action {
     } else {
       console.log(`Starting timer for task ${this.settings.task_id}`);
 
-      Everhour.timers.start(this.settings.task_id)
+      Everhour.timers
+        .start(this.settings.task_id)
         .then(() => {
           updateTimerState();
         })

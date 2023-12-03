@@ -1,7 +1,14 @@
-import plugin, {getCurrentTask, updateTimerState} from "../Plugin";
-import Action from "./Action";
+import plugin, { getCurrentTask, updateTimerState } from '../Plugin';
+import Action from './Action';
 
-function wrapText(ctx: CanvasRenderingContext2D, text: string, x: number, y: number, maxWidth: number, lineHeight: number) {
+function wrapText(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  maxWidth: number,
+  lineHeight: number,
+) {
   const words = text.split(' ');
   let line = '';
 
@@ -13,8 +20,7 @@ function wrapText(ctx: CanvasRenderingContext2D, text: string, x: number, y: num
       ctx.fillText(line, x, y);
       line = words[n] + ' ';
       y += lineHeight;
-    }
-    else {
+    } else {
       line = testLine;
     }
   }

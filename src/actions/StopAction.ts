@@ -1,24 +1,24 @@
-import Images from "../Images";
-import plugin, { getCurrentTask, updateTimerState } from "../Plugin";
-import Action from "./Action";
-import Everhour from "../Everhour";
+import Images from '../Images';
+import plugin, { getCurrentTask, updateTimerState } from '../Plugin';
+import Action from './Action';
+import Everhour from '../Everhour';
 
 function secondsToTime(secs: number) {
   secs = Math.round(secs);
   const hours = Math.floor(secs / (60 * 60));
 
   const divisor_for_minutes = secs % (60 * 60);
-  let minutes: number|string = Math.floor(divisor_for_minutes / 60);
+  let minutes: number | string = Math.floor(divisor_for_minutes / 60);
 
   const divisor_for_seconds = divisor_for_minutes % 60;
-  let seconds: number|string = Math.ceil(divisor_for_seconds);
+  let seconds: number | string = Math.ceil(divisor_for_seconds);
 
   if (seconds < 10) {
-    seconds = "0" + seconds;
+    seconds = '0' + seconds;
   }
 
   if (minutes < 10) {
-    minutes = "0" + minutes;
+    minutes = '0' + minutes;
   }
 
   if (hours === 0) {
@@ -47,7 +47,8 @@ export default class StopAction extends Action {
   public onKeyDown(): void {
     console.log('Stopping timer');
 
-    Everhour.timers.stop()
+    Everhour.timers
+      .stop()
       .then(() => {
         updateTimerState();
       })

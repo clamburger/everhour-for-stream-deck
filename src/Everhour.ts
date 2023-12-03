@@ -1,4 +1,4 @@
-let apiKey: string|null = null;
+let apiKey: string | null = null;
 
 function request(endpoint: string, method: string, data?: Record<string, any>) {
   if (!apiKey) {
@@ -12,31 +12,31 @@ function request(endpoint: string, method: string, data?: Record<string, any>) {
 
   const options: RequestInit = {
     method,
-    headers
-  }
+    headers,
+  };
 
   if (data !== undefined) {
     if (method === 'POST' || method === 'PUT') {
       options.body = JSON.stringify(data);
       headers.set('Content-Type', 'application/json');
     } else if (method === 'GET') {
-      url.search = (new URLSearchParams(data)).toString();
+      url.search = new URLSearchParams(data).toString();
     }
   }
 
-  return fetch(url.toString(), options)
+  return fetch(url.toString(), options);
 }
 
 const api = {
   getApiToken: () => apiKey,
   setApiToken: (apiToken: string) => {
-    apiKey = apiToken
+    apiKey = apiToken;
   },
   timers: {
     get: () => request('timers/current', 'GET'),
-    start: (task: string) => request('timers', 'POST', {task}),
-    stop: () => request('timers/current', 'DELETE')
-  }
-}
+    start: (task: string) => request('timers', 'POST', { task }),
+    stop: () => request('timers/current', 'DELETE'),
+  },
+};
 
-export default api
+export default api;

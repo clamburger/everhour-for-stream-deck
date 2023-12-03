@@ -5,8 +5,8 @@ import EventEmitter from 'eventemitter3';
 import { Logger } from 'ts-log';
 import { ReceivedPluginEventTypes } from '@rweich/streamdeck-events/dist/Events/Received/Plugin/ReceivedPluginEventTypes';
 import { ReceivedPropertyInspectorEventTypes } from '@rweich/streamdeck-events/dist/Events/Received/PropertyInspector';
-import JsonParseError from "@rweich/streamdeck-ts/dist/exception/JsonParseError";
-import OnWebsocketOpenEvent from "@rweich/streamdeck-ts/dist/events/OnWebsocketOpenEvent";
+import JsonParseError from '@rweich/streamdeck-ts/dist/exception/JsonParseError';
+import OnWebsocketOpenEvent from '@rweich/streamdeck-ts/dist/events/OnWebsocketOpenEvent';
 
 // TODO: add types to the eventemitter
 

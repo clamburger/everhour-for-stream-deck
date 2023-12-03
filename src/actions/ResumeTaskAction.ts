@@ -1,8 +1,15 @@
-import plugin, {getCurrentTask, getPreviousTask, updateTimerState} from "../Plugin";
-import Action from "./Action";
-import Everhour from "../Everhour";
+import plugin, { getCurrentTask, getPreviousTask, updateTimerState } from '../Plugin';
+import Action from './Action';
+import Everhour from '../Everhour';
 
-function wrapText(ctx: CanvasRenderingContext2D, text: string, x: number, y: number, maxWidth: number, lineHeight: number) {
+function wrapText(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  maxWidth: number,
+  lineHeight: number,
+) {
   const words = text.split(' ');
   let line = '';
 
@@ -14,8 +21,7 @@ function wrapText(ctx: CanvasRenderingContext2D, text: string, x: number, y: num
       ctx.fillText(line, x, y);
       line = words[n] + ' ';
       y += lineHeight;
-    }
-    else {
+    } else {
       line = testLine;
     }
   }
@@ -62,7 +68,8 @@ export default class ResumeTaskAction extends Action {
 
     console.log(`Starting timer for previous task ${task.task.id}`);
 
-    Everhour.timers.start(task.task.id)
+    Everhour.timers
+      .start(task.task.id)
       .then(() => {
         updateTimerState();
       })
