@@ -1,11 +1,11 @@
 {
   "Actions": [
     {
-      "Icon": "assets/images/actionStart",
+      "Icon": "images/actionStart",
       "Name": "Start Tracking Time",
       "States": [
         {
-          "Image": "assets/images/keyDefault",
+          "Image": "images/keyDefault",
           "TitleAlignment": "top",
           "FontSize": "8"
         }
@@ -14,11 +14,11 @@
       "UUID": "org.clamburger.everhour.start-task"
     },
     {
-      "Icon": "assets/images/actionStart",
+      "Icon": "images/actionStart",
       "Name": "Resume Previous Task",
       "States": [
         {
-          "Image": "assets/images/keyDefault",
+          "Image": "images/keyDefault",
           "TitleAlignment": "top",
           "FontSize": "8"
         }
@@ -27,11 +27,11 @@
       "UUID": "org.clamburger.everhour.resume-task"
     },
     {
-      "Icon": "assets/images/actionStop",
+      "Icon": "images/actionStop",
       "Name": "Stop Timer",
       "States": [
         {
-          "Image": "assets/images/keyDefault",
+          "Image": "images/keyDefault",
           "TitleAlignment": "top",
           "FontSize": "12"
         }
@@ -41,11 +41,11 @@
       "UUID": "org.clamburger.everhour.stop"
     },
     {
-      "Icon": "assets/images/actionDefault",
+      "Icon": "images/actionDefault",
       "Name": "Show Current Task",
       "States": [
         {
-          "Image": "assets/images/keyDefault"
+          "Image": "images/keyDefault"
         }
       ],
       "Tooltip": "Shows the name of the current task.",
@@ -58,11 +58,11 @@
   "PropertyInspectorPath": "propertyinspector.html",
   "Description": "Allows you to control your Everhour timer",
   "Name": "Everhour",
-  "Icon": "assets/images/pluginIcon",
+  "Icon": "images/pluginIcon",
   "URL": "https://clamburger.org",
   "Version": "0.0.0-development",
   "Category": "Everhour",
-  "CategoryIcon": "assets/images/categoryIcon",
+  "CategoryIcon": "images/categoryIcon",
   "OS": [
     {
       "Platform": "mac",
