@@ -34,9 +34,15 @@ const api = {
   },
   timers: {
     get: () => request('timers/current', 'GET'),
-    start: (task: string) => request('timers', 'POST', { task, userDate: new Date().toISOString().substring(0, 10) }),
+    start: (task: string) => request('timers', 'POST', { task, userDate: getUserDate() }),
     stop: () => request('timers/current', 'DELETE'),
   },
 };
+
+function getUserDate() {
+  const date = new Date();
+  const pad = (num: number) => (num < 10 ? '0' : '') + num;
+  return date.getFullYear() + '-' + pad(date.getMonth() + 1) + '-' + pad(date.getDate());
+}
 
 export default api;
