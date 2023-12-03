@@ -62,9 +62,9 @@ https://app.everhour.com/#/time(view:as:1206085765420945)
 In this case, the ID of the task is `as:1206085765420945`. Copy this into the Task ID field for the
 action.
 
-## Problems?
+## Feedback
 
-If you run into any problems, please [open an issue](https://github.com/clamburger/everhour-for-stream-deck/issues/new).
+If you run into any problems or have any feature requests, please [open an issue](https://github.com/clamburger/everhour-for-stream-deck/issues/new).
 
 ## Development
 
