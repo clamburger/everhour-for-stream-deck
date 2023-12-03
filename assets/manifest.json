@@ -59,7 +59,7 @@
   "Description": "Allows you to control your Everhour timer",
   "Name": "Everhour",
   "Icon": "images/pluginIcon",
-  "URL": "https://clamburger.org",
+  "URL": "https://github.com/clamburger/everhour-for-stream-deck",
   "Version": "0.0.0-development",
   "Category": "Everhour",
   "CategoryIcon": "images/categoryIcon",
