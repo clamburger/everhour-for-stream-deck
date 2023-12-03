@@ -34,7 +34,7 @@ const api = {
   },
   timers: {
     get: () => request('timers/current', 'GET'),
-    start: (task: string) => request('timers', 'POST', { task }),
+    start: (task: string) => request('timers', 'POST', { task, userDate: new Date().toISOString().substring(0, 10) }),
     stop: () => request('timers/current', 'DELETE'),
   },
 };
